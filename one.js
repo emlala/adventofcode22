@@ -12,9 +12,6 @@ function createArray(data) {
             data[i][j] = parseInt(data[i][j]);
         }
     }
-    // remove last element of last array
-    // it's NaN because of an extra newline at the end of the data set
-    data[data.length - 1].pop();
     return data;
 }
 
@@ -29,6 +26,9 @@ function createSumArray(data) {
 }
 
 let dataArray = createArray(text);
+// remove last element of last array
+// it's NaN because of an extra newline at the end of the data set
+dataArray[dataArray.length - 1].pop();
 let sumArray = createSumArray(dataArray);
 let topThree = sumArray.slice(0, 3);
 let sumOfTopThree = topThree.reduce((a, b) => a + b);
