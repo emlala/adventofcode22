@@ -3,12 +3,12 @@ import fs from 'fs';
 
 const text = fs.readFileSync("./data/input2.txt").toString('utf-8');
 
-let x = 1; // a
-let y = 2; // b
-let z = 3; // c
-let lose = 0; // xb, yc, za
-let draw = 3; // xa, yb, zc
-let win = 6; // xc, ya, zb
+const x = 1; // a
+const y = 2; // b
+const z = 3; // c
+const lose = 0; // xb, yc, za
+const draw = 3; // xa, yb, zc
+const win = 6; // xc, ya, zb
 
 let score1 = 0;
 let score2 = 0;
@@ -86,3 +86,6 @@ for (let i = 0; i < data.length; i++) {
 }
 
 console.log("Score 1: " + score1 + "\nScore 2: " + score2);
+
+// again there's extra whitespace at the end of the file, this solution just ignores it 
+// the functions process the whitespace, but as it doesn't match the conditions, it's ignored
