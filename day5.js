@@ -5,8 +5,9 @@ const data = fs.readFileSync("./data/input5.txt").toString('utf-8').trim().split
 let layers = [];
 let piles = [[], [], [], [], [], [], [], [], []];
 
-// Parse the input, first to an array of lines (layers)
-// then arrange the lines into piles
+// The  first nine lines of the data contain a table of "containers" in vertical "piles"
+// First parse the table to an array of lines (layers) to remove extra whitespace etc.
+// then arrange the data into arrays per pile
 
 for (let i = 0; i < 8; i++) {
   layers.push([]);
@@ -24,7 +25,6 @@ for (let i = 0; i < layers.length; i++) {
 }
 
 // part 1
-
 function moveAndRearrange(count, from, to) {
   from -= 1;
   to -= 1;
@@ -33,7 +33,6 @@ function moveAndRearrange(count, from, to) {
 }
 
 // part 2
-
 function moveDontRearrange(count, from, to) {
   from -= 1;
   to -= 1;
@@ -42,7 +41,7 @@ function moveDontRearrange(count, from, to) {
 }
 
 for (let i = 10; i < data.length; i++) {
-  // change input to int arrays before calling the moving function
+  // parse input from line 11 onwards to int arrays before calling the moving function
   data[i] = data[i].replace("move ", "").replace("from ", ""). replace("to ", "").split(" ").map(Number);
   moveDontRearrange(data[i][0], data[i][1], data[i][2]);
 }
