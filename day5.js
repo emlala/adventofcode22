@@ -2,25 +2,18 @@
 import fs from 'fs';
 
 const data = fs.readFileSync("./data/input5.txt").toString('utf-8').trim().split("\n");
-let layers = [];
 let piles = [[], [], [], [], [], [], [], [], []];
 
-// The  first nine lines of the data contain a table of "containers" in vertical "piles"
-// First parse the table to an array of lines (layers) to remove extra whitespace etc.
-// then arrange the data into arrays per pile
+// The first nine lines of the data contain a table of "containers" in vertical "piles"
+// Parse through the table line by line and turn the piles into arrays
 
 for (let i = 0; i < 8; i++) {
-  layers.push([]);
+  let counter = 0;
   for (let j = 1; j < data[i].length; j += 4) {
-    layers[i].push(data[i][j]);
-  }
-}
-
-for (let i = 0; i < layers.length; i++) {
-  for (let j = 0; j < layers[i].length; j++) {
-    if (layers[i][j] != ' ') {
-     piles[j].push(layers[i][j]);
+    if (data[i][j] != ' ') {
+      piles[counter].push(data[i][j]);
     }
+    counter++;
   }
 }
 
@@ -43,7 +36,8 @@ function moveDontRearrange(count, from, to) {
 for (let i = 10; i < data.length; i++) {
   // parse input from line 11 onwards to int arrays before calling the moving function
   data[i] = data[i].replace("move ", "").replace("from ", ""). replace("to ", "").split(" ").map(Number);
-  moveDontRearrange(data[i][0], data[i][1], data[i][2]);
+  moveAndRearrange(data[i][0], data[i][1], data[i][2]);
 }
 
-console.log("Result 2: " + piles[0][0] + piles[1][0] + piles[2][0] + piles[3][0] + piles[4][0] + piles[5][0] + piles[6][0] + piles[7][0] + piles[8][0]);
+// result is the top (/first) container in each pile
+console.log("Result: " + piles[0][0] + piles[1][0] + piles[2][0] + piles[3][0] + piles[4][0] + piles[5][0] + piles[6][0] + piles[7][0] + piles[8][0]);
