@@ -35,7 +35,7 @@ function moveDontRearrange(count, from, to) {
 
 for (let i = 10; i < data.length; i++) {
   // parse input from line 11 onwards to int arrays before calling the moving function
-  data[i] = data[i].replace("move ", "").replace("from ", ""). replace("to ", "").split(" ").map(Number);
+  data[i] = data[i].replace("move ", "").replace("from ", "").replace("to ", "").split(" ").map(Number);
   moveAndRearrange(data[i][0], data[i][1], data[i][2]);
 }
 
