@@ -13,6 +13,7 @@ function findMarkerFour(data) {
                 marker += data[i];
             } else if (marker.length === 3) {
                 return `Part 1: ${marker += data[i]}, ${i+=1}`;
+            } 
         } else {
             // the marker contains the letter, find the first occurence and slice the marker after it
             let ind = marker.indexOf(data[i]);
