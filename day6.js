@@ -8,10 +8,11 @@ const data = fs.readFileSync("./data/input6.txt").toString('utf-8').trim();
 function findMarkerFour(data) {
     let marker = data[0];
     for (let i = 1; i < data.length; i++) {
-        if (!marker.includes(data[i]) && marker.length <= 2) {
-            marker += data[i];
-        } else if (!marker.includes(data[i]) && marker.length === 3) {
-            return `Part 1: ${marker += data[i]}, ${i+=1}`;
+        if (!marker.includes(data[i])) {
+            if (marker.length <= 2) {
+                marker += data[i];
+            } else if (marker.length === 3) {
+                return `Part 1: ${marker += data[i]}, ${i+=1}`;
         } else {
             // the marker contains the letter, find the first occurence and slice the marker after it
             let ind = marker.indexOf(data[i]);
@@ -25,10 +26,12 @@ function findMarkerFour(data) {
 function findMarkerFourteen(data) {
     let marker = data[0];
     for (let i = 1; i < data.length; i++) {
-        if (!marker.includes(data[i]) && marker.length <= 12) {
-            marker += data[i];
-        } else if (!marker.includes(data[i]) && marker.length === 13) {
-            return `Part 2: ${marker += data[i]}, ${i+=1}`;
+        if (!marker.includes(data[i])) {
+            if (marker.length <= 12) {
+                marker += data[i];
+            } else if (marker.length === 13) {
+                return `Part 2: ${marker += data[i]}, ${i+=1}`;
+            }
         } else {
             let ind = marker.indexOf(data[i]);
             marker = marker.slice(ind + 1) + data[i];
