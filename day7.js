@@ -13,12 +13,10 @@ function calcSizes(text) {
 
   for (let i = 0; i < text.length; i++) {
     if (text[i].includes("$ cd") && !text[i].includes("..")) {
-      let dir = text[i].slice(5);
-      // some directories have the same name, so add a number at the end of the name
-      if (dir in dirs) dir += i;
+      let dir = text[i].slice(5) + i; // some dirs in data have the same name, add i to differentiate
       current.push(dir);
       dirs[dir] = 0;
-    } else if (text[i].includes("$ cd ..")) {
+    } else if (text[i] === "$ cd ..") {
       current.pop();
     } else if (!isNaN(text[i][0])) {
       text[i] = text[i].split(" ");
@@ -30,6 +28,7 @@ function calcSizes(text) {
 }
 
 let dirs = calcSizes(text);
+console.log(dirs);
 
 // part 1
 // find the directories that have the size of 100,000 units at most
@@ -50,7 +49,7 @@ console.log("Part 1: " + smallDirTotal(dirs));
 // total disk space is 70,000,000 units
 
 function findFreeSpace(dirs) {
-  let spaceNeeded = 30000000 - (70000000 - dirs['/']);
+  let spaceNeeded = 30000000 - (70000000 - dirs['/0']);
   let sorted = [];
   Object.keys(dirs).forEach(dir => {
     if (dirs[dir] >= spaceNeeded) sorted.push(dirs[dir]);
