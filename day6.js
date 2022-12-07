@@ -9,10 +9,9 @@ function findMarkerFour(data) {
     let marker = data[0];
     for (let i = 1; i < data.length; i++) {
         if (!marker.includes(data[i])) {
-            if (marker.length <= 2) {
-                marker += data[i];
-            } else if (marker.length === 3) {
-                return `Part 1: ${marker += data[i]}, ${i+=1}`;
+            marker += data[i];
+            if (marker.length === 4) {
+                return `Part 1: ${marker}, ${i+=1}`;
             } 
         } else {
             // the marker contains the letter, find the first occurence and slice the marker after it
@@ -28,9 +27,8 @@ function findMarkerFourteen(data) {
     let marker = data[0];
     for (let i = 1; i < data.length; i++) {
         if (!marker.includes(data[i])) {
-            if (marker.length <= 12) {
-                marker += data[i];
-            } else if (marker.length === 13) {
+            marker += data[i];
+            if (marker.length === 13) {
                 return `Part 2: ${marker += data[i]}, ${i+=1}`;
             }
         } else {
