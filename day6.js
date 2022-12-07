@@ -28,8 +28,8 @@ function findMarkerFourteen(data) {
     for (let i = 1; i < data.length; i++) {
         if (!marker.includes(data[i])) {
             marker += data[i];
-            if (marker.length === 13) {
-                return `Part 2: ${marker += data[i]}, ${i+=1}`;
+            if (marker.length === 14) {
+                return `Part 2: ${marker}, ${i+=1}`;
             }
         } else {
             let ind = marker.indexOf(data[i]);
