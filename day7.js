@@ -28,7 +28,6 @@ function calcSizes(text) {
 }
 
 let dirs = calcSizes(text);
-console.log(dirs);
 
 // part 1
 // find the directories that have the size of 100,000 units at most
