@@ -4,7 +4,7 @@ import fs from 'fs';
 const text = fs.readFileSync("./data/input7.txt").toString('utf-8').trim().split("\n");
 
 // calculate the size of each directory, subdirectory sizes included
-// return an object with the directory names as keys and the size as values
+// return an object with the directory names as keys and sizes as values
 // keep track of the current directory path with an array, add the file size to all directories in the path
 
 function calcSizes(text) {
