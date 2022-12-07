@@ -14,10 +14,8 @@ function calcSizes(text) {
   for (let i = 0; i < text.length; i++) {
     if (text[i].includes("$ cd") && !text[i].includes("..")) {
       let dir = text[i].slice(5);
-      // some directories have the same name, so we add a number to the end
-      if (dir in dirs) {
-          dir += i;
-      }
+      // some directories have the same name, so add a number at the end of the name
+      if (dir in dirs) dir += i;
       current.push(dir);
       dirs[dir] = 0;
     } else if (text[i].includes("$ cd ..")) {
@@ -40,9 +38,7 @@ let dirs = calcSizes(text);
 function smallDirTotal(dirs) {
   let sum = 0;
   Object.keys(dirs).forEach(dir => {
-      if (dirs[dir] <= 100000) {
-          sum += dirs[dir];
-      }
+      if (dirs[dir] <= 100000) sum += dirs[dir];
   });
   return sum;
 }
@@ -57,9 +53,7 @@ function findFreeSpace(dirs) {
   let spaceNeeded = 30000000 - (70000000 - dirs['/']);
   let sorted = [];
   Object.keys(dirs).forEach(dir => {
-    if (dirs[dir] >= spaceNeeded) {
-      sorted.push(dirs[dir]);
-    }
+    if (dirs[dir] >= spaceNeeded) sorted.push(dirs[dir]);
   });
   return sorted.sort((a, b) => a - b)[0];
 }
